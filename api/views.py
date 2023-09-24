@@ -31,7 +31,7 @@ class ProductViewSet(IsAuthenticatedMixin, ModelViewSet):
             to_attr='accessible_lesson_access'
         )
         return Product.objects.filter(lessons__lessonaccess__user=user).distinct().prefetch_related(
-            lesson_access_prefetch)
+            'lessons')
 
 
 class StatisticsView(IsAuthenticatedMixin, generics.ListAPIView):
